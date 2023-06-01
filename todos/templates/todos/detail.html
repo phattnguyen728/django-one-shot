@@ -7,12 +7,27 @@
   <title>{{ todo_list_detail.name }}</title>
 </head>
 <body>
-  <table>
-    {% for todo in todo_list_detail.items.all %}
-      <tr>
-        <td>{{ todo.task }}</td>
-      </tr>
-    {% endfor %}
-  </table>
+  <main>
+    <div>
+      <h1>{{ todo_list_detail.name }}</h1>
+      <h2>Tasks</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Due Date</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <table>
+      {% for todo in todo_list_detail.items.all %}
+        <tr>
+          <td>{{ todo.task }}</td>
+          <td>{{ todo.due_date|date:"M j, Y" }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </main>
   </body>
 </html>
