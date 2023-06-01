@@ -8,6 +8,7 @@ class TodoListAdmin(admin.ModelAdmin):
     list_display = (
         "name",
         "id",
+        "created_on",
     )
 
 
@@ -18,4 +19,5 @@ class TodoItemAdmin(admin.ModelAdmin):
         "due_date",
         "todo_list_list",
         "id",
+        "is_completed",
     )
