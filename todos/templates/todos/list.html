@@ -7,6 +7,11 @@
   <title>Todo Lists</title>
 </head>
 <body>
+  <header>
+    <nav>
+      <ul></ul>
+    </nav>
+  </header>
   <main>
     <div>
       <h1>My Lists</h1>
@@ -21,9 +26,11 @@
           {% for todo in todo_list_list %}
             <tr>
               <td>{{ todo.name }}</td>
-              <td>{{ todo.item }}</td>
+              <td>{{ todo }}</td>
             </tr>
           {% endfor %}
+          <br>
+
         </tbody>
       </table>
     </div>

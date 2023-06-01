@@ -16,4 +16,5 @@ class TodoItemAdmin(admin.ModelAdmin):
     list_display = (
         "task",
         "due_date",
+        "id",
     )

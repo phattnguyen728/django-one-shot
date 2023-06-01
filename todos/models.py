@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 # Create your models here.
@@ -19,3 +20,6 @@ class TodoItem(models.Model):
         related_name="items",
         on_delete=models.CASCADE,
     )
+
+    class Meta:
+        ordering = ["task"]
