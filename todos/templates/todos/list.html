@@ -26,7 +26,7 @@
           {% for todo in todo_list_list %}
             <tr>
               <td>{{ todo.name }}</td>
-              <td>{{ todo }}</td>
+              <td>{{ todo.items.all|length }}</td>
             </tr>
           {% endfor %}
           <br>

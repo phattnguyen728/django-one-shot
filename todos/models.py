@@ -1,5 +1,4 @@
 from django.db import models
-from django.conf import settings
 
 
 # Create your models here.
@@ -22,4 +21,4 @@ class TodoItem(models.Model):
     )
 
     class Meta:
-        ordering = ["task"]
+        ordering = ["due_date"]

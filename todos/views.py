@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from todos.models import TodoList
+from todos.models import TodoList, TodoItem
 
 
 # Create your views here.

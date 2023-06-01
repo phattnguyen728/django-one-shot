@@ -7,8 +7,12 @@
   <title>{{ todo_list_detail.name }}</title>
 </head>
 <body>
-    <tr>
-      {{ todo_list_detail }}
-    </tr>
+  <table>
+    {% for todo in todo_list_detail.items.all %}
+      <tr>
+        <td>{{ todo.task }}</td>
+      </tr>
+    {% endfor %}
+  </table>
   </body>
 </html>
