@@ -8,12 +8,12 @@ def todo_list_create(request):
     if request.method == "POST":
         form = TodoListForm(request.POST)
         if form.is_valid():
-            form.save()
+            item = form.save()
             todo_list = get_object_or_404(
                 TodoList,
                 name=form.cleaned_data["name"],
             )
-            return redirect(todo_list_detail, todo_list.id)
+            return redirect(todo_list_detail, id=item.list.id)
     else:
         form = TodoListForm()
     context = {
@@ -62,3 +62,21 @@ def todo_list_delete(request, id):
         return redirect("todo_list_list")
     else:
         return render(request, "todos/delete.html")
+
+
+def todo_item_create(request):
+    if request.method == "POST":
+        form = TodoItemForm(request.POST)
+        if form.is_valid():
+            # list = get_object_or_404(
+            #     TodoList,
+            #     name=form.cleaned_data["list"],
+            # )
+            item = form.save()
+            return redirect("todo_list_detail", id=item.list.id)
+    else:
+        form = TodoItemForm()
+    context = {
+        "form": form,
+    }
+    return render(request, "todos/items/create.html", context)

@@ -14,7 +14,7 @@ class TodoItem(models.Model):
         blank=True,
     )
     is_completed = models.BooleanField(default=False)
-    todo_list_list = models.ForeignKey(
+    list = models.ForeignKey(
         TodoList,
         related_name="items",
         on_delete=models.CASCADE,
