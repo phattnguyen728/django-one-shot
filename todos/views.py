@@ -52,3 +52,13 @@ def todo_list_detail(request, id):
         "todo_list_detail": list,
     }
     return render(request, "todos/detail.html", context)
+
+
+def todo_list_delete(request, id):
+    # list = TodoList.objects.get(id=id)
+    list = get_object_or_404(TodoList, id=id)
+    if request.method == "POST":
+        list.delete()
+        return redirect("todo_list_list")
+    else:
+        return render(request, "todos/delete.html")
