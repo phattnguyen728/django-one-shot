@@ -13,7 +13,7 @@ def todo_list_create(request):
                 TodoList,
                 name=form.cleaned_data["name"],
             )
-            return redirect(todo_list_detail, id=item.list.id)
+            return redirect(todo_list_detail, id=item.id)
     else:
         form = TodoListForm()
     context = {
@@ -80,3 +80,33 @@ def todo_item_create(request):
         "form": form,
     }
     return render(request, "todos/items/create.html", context)
+
+
+def todo_item_update(request, id):
+    item = get_object_or_404(TodoItem, id=id)
+    if request.method == "POST":
+        form = TodoItemForm(request.POST, instance=item)
+        if form.is_valid():
+            item = form.save()
+            return redirect("todo_list_detail", id=item.list.id)
+    else:
+        form = TodoItemForm(instance=item)
+    context = {
+        "form": form,
+    }
+    return render(request, "todos/items/edit.html", context)
+
+
+def todo_list_update(request, id):
+    list = get_object_or_404(TodoList, id=id)
+    if request.method == "POST":
+        form = TodoListForm(request.POST, instance=list)
+        if form.is_valid():
+            form.save()
+            return redirect("todo_list_detail", id=id)
+    else:
+        form = TodoListForm(instance=list)
+    context = {
+        "form": form,
+    }
+    return render(request, "todos/edit.html", context)
